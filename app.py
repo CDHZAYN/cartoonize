@@ -169,6 +169,14 @@ def cartoonize():
             return render_template("index_cartoonized.html")
     else:
         return render_template("index_cartoonized.html")
+    
+ 
+@app.after_request
+def after(resp):
+    resp = make_response(resp)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Access-Control-Allow-Methods'] = 'GET,POST'
+    return resp
 
 if __name__ == "__main__":
     # Commemnt the below line to run the Appication on Google Colab using ngrok
