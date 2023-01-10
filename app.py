@@ -13,6 +13,7 @@ sys.path.insert(0, './white_box_cartoonizer/')
 import cv2
 from flask import Flask, render_template, make_response, flash
 import flask
+from flask_cors import CORS
 from PIL import Image
 import numpy as np
 import skvideo.io
@@ -32,6 +33,7 @@ if not opts['run_local']:
     import Algorithmia
 
 app = Flask(__name__)
+CORS(app, resources=r'/*')
 if opts['colab-mode']:
     run_with_ngrok(app)   #starts ngrok when the app is run
 
